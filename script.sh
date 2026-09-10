@@ -90,7 +90,7 @@ cat victor/hall/opening_guests reception/guest_notes > reception/all_guests
 cat staff_room/kostya_message >> opening_day
 mv roof/max_letter hotel_office/max_message
 
-ls -lR eleon | grep "^-" | sort -k5 -n -r | head -6
+ls -lR . | grep "^-" | sort -k5 -n -r | head -6
 grep -r -i -h "баринов\|софия" . | grep -v -i "гост" | sort | head -5
 grep -r -l -i "гост" victor/hall/ reception/ | wc -l
 ls -1 reception | while read file; do [ -f "reception/$file" ] && { head -n 1 "reception/$file"; tail -n 1 "reception/$file"; }; done | grep -i -E "гост|соф" | sort -r
