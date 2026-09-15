@@ -90,13 +90,17 @@ cat victor/hall/opening_guests reception/guest_notes > reception/all_guests
 cat staff_room/kostya_message >> opening_day
 mv roof/max_letter hotel_office/max_message
 
-ls -lR . | grep "^-" | sort -k5 -n -r | head -6
-grep -r -i -h "баринов\|софия" . | grep -v -i "гост" | sort | head -5
-grep -r -l -i "гост" victor/hall/ reception/ | wc -l
-ls -1 reception | while read file; do [ -f "reception/$file" ] && { head -n 1 "reception/$file"; tail -n 1 "reception/$file"; }; done | grep -i -E "гост|соф" | sort -r
-grep -v -i "столик" reception/all_guests | sort -r | head -4 | wc -w
-ls -lR ../ | grep "^-" | grep -E "^[^ ]+ 2 " | rev | cut -d' ' -f1 | rev
-grep -r -l -i -E "баринов|макс" victor/roof_archive 2>/dev/null | wc -l
+cd ../
+
+ls -lR eleon/ | grep "^-" | sort -k5 | head -n6
+grep -ri 'баринов\|софия' | grep -vi "гост" | sort | head -n5
+grep -ril "гост" eleon/victor/hall eleon/reception | wc -l
+(head -n1 -q eleon/reception/* ; tail -n1 -q eleon/reception/*) | grep -i "гост\|соф" | sort -r
+cat eleon/reception/all_guests | grep -v "столик" | sort -r | head -n4 | wc -w
+ls -Rl . | grep "^-" | grep " 2 " | sort -k8
+grep -ril "баринов\|макс" eleon/victor/roof_archive/ | wc -l
+
+cd eleon/
 
 rm -f hotel_office/eleonora_order
 rm -f staff_room/current_menu
